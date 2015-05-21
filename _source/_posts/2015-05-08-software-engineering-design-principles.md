@@ -144,7 +144,7 @@ be automated. These are automation principles we follow:
 
 * Automate every aspect of the deployment including long running db migrations
 * All artifacts are immutable and versioned
-* All code modules get depenendcies automatically from central artifact server
+* All code modules get dependencies automatically from central artifact server
 * Creation of base images and provisioning of new hardware is automated
 * All forms of testing are automated 
 * Development environment setup is automated

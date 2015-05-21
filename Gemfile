@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'kramdown'
-gem 'coderay'
-
-gem 'github-pages'
+gem 'github-pages', '= 34'
+gem 'coderay', '= 1.1.0'
