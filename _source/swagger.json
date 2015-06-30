@@ -31,13 +31,13 @@
   "produces": [
     "application/json"
   ],
-  "security": {
+  "security": [{
     "Authorization": {
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
     }
-  },
+  }],
   "paths": {
     "/users": {
       "get": {
@@ -50,9 +50,9 @@
         "produces": [
           "application/json"
         ],
-        "security": {
+        "security": [{
           "Authorization": []
-        },
+        }],
         "parameters": [{
               "name": "q",
               "description": "Searches firstName, lastName, and email attributes of users for matching value",
