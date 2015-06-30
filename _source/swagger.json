@@ -31,13 +31,14 @@
   "produces": [
     "application/json"
   ],
-  "security": [{
-    "Authorization": [{
+  "securityDefinitions": {
+    "Authorization": {
       "type": "apiKey",
       "name": "Authorization",
-      "in": "header"
-    }]
-  }],
+      "in": "header",
+      "description": "The Okta API currently requires the custom HTTP authentication scheme SSWS for authentication."
+    }
+  },
   "paths": {
     "/users": {
       "get": {
