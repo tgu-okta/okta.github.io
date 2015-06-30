@@ -1,0 +1,361 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Okta API",
+    "description": "Allows Okta customers easy access to the Okta API",
+    "termsOfService": "http://developer.okta.com/terms/",
+    "contact": {
+      "name": "Okta Developer Team",
+      "email": "developers@okta.com",
+      "url": "http://developer.okta.com/"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "externalDocs": {
+    "description": "Find more info here",
+    "url": "http://developer.okta.com/docs/api/getting_started/design_principles.html"
+  },
+  "host": "your-subdomain.okta.com",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "operationId": "getUsers",
+        "description": "Enumerates users in your organization with pagination. A subset of users can be returned that match a supported filter expression or query",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "http://developer.okta.com/docs/api/resources/users.html#list-users"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "security": {
+          "Authorization": []
+        },
+        "parameters": [{
+              "name": "q",
+              "description": "Searches firstName, lastName, and email attributes of users for matching value",
+              "type": "string",
+              "required": false,
+              "in": "query"
+          }, {
+              "name": "limit",
+              "description": "Specified the number of results",
+              "type": "integer",
+              "required": false,
+              "default": 10000,
+              "in": "query"
+          }, {
+              "name": "filter",
+              "description": "Filter expression for users",
+              "type": "string",
+              "required": false,
+              "in": "query"
+          }, {
+              "name": "after",
+              "description": "Specifies the pagination cursor for the next page of users",
+              "type": "string",
+              "required": false,
+              "in": "query"
+          }],
+        "responses": {
+          "200": {
+            "description": "Users response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "headers": {
+              "X-Rate-Limit-Limit": {
+                "description": "The number of allowed requests in the current period",
+                "type": "integer"
+              },
+              "X-Rate-Limit-Remaining": {
+                "description": "The number of remaining requests in the current period",
+                "type": "integer"
+              },
+              "X-Rate-Limit-Reset": {
+                "description": "The number of seconds left in the current period",
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "required": [
+        "id",
+        "status",
+        "created",
+        "lastUpdated",
+        "profile",
+        "credentials"
+      ],
+      "externalDocs": {
+        "description": "find more info here",
+        "url": "http://developer.okta.com/docs/api/resources/users.html#user-model"
+      },
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "unique key for user"
+        },
+        "status": {
+            "type": "string",
+            "description": "current status of user",
+            "enum": ["STAGED",
+                    "PROVISIONED", 
+                    "ACTIVE", 
+                    "RECOVERY", 
+                    "LOCKED_OUT", 
+                    "PASSWORD_EXPIRED", 
+                    "DEPROVISIONED"]
+        },
+        "created": {
+            "type": "string",
+            "description": "timestamp when user was created",
+            "format": "date-time"
+        },
+        "activated": {
+            "type": "string",
+            "description": "timestamp when transition to ACTIVE status completed",
+            "format": "date-time"
+        },
+        "statusChanged": {
+            "type": "string",
+            "description": "timestamp when status last changed",
+            "format": "date-time"
+        },
+        "lastLogin": {
+            "type": "string",
+            "description": "timestamp of last login",
+            "format": "date-time"
+        },
+        "lastUpdated": {
+            "type": "string",
+            "description": "timestamp when user was last updated",
+            "format": "date-time"
+        },
+        "passwordChanged": {
+            "type": "string",
+            "description": "timestamp when password last changed",
+            "format": "date-time"
+        },
+        "transitioningToStatus": {
+            "type": "string",
+            "description": "target status of an in progress asynchronous status transition",
+            "enum": ["PROVISIONED",
+                    "ACTIVE", 
+                    "DEPROVISIONED"]
+        },
+        "profile": {
+            "$ref": "#/definitions/UserProfile"
+        },
+        "credentials": {
+            "$ref": "#/definitions/LoginCredentials"
+        }
+      }
+    },
+    "UserProfile": {
+      "type": "object",
+      "required": [
+        "login",
+        "email",
+        "firstName",
+        "lastName"
+      ],
+      "externalDocs": {
+        "description": "find more info here",
+        "url": "http://developer.okta.com/docs/api/resources/users.html#profile-object"
+      },
+      "properties": {
+        "login": {
+            "type": "string",
+            "minimum": 5,
+            "maximum": 100
+        },
+        "email": {
+            "type": "string",
+            "minimum": 5,
+            "maximum": 100
+        },
+        "secondEmail": {
+            "type": "string",
+            "minimum": 5,
+            "maximum": 100
+        },
+        "firstName": {
+            "type": "string",
+            "minimum": 1,
+            "maximum": 50
+        },
+        "lastName": {
+            "type": "string",
+            "minimum": 1,
+            "maximum": 50
+        },
+        "mobilePhone": {
+            "type": "string",
+            "minimum": 0,
+            "maximum": 100
+        }
+      }
+    },
+    "LoginCredentials": {
+      "type": "object",
+      "externalDocs": {
+        "description": "find more info here",
+        "url": "http://developer.okta.com/docs/api/resources/users.html#credentials-object"
+      },
+      "properties": {
+        "password": {
+            "$ref": "#/definitions/Password"
+        },
+        "recovery_question": {
+            "$ref": "#/definitions/RecoveryQuestion"
+        },
+        "provider": {
+            "$ref": "#/definitions/Provider"
+        }
+      }
+    },
+    "Password": {
+      "type": "object",
+      "externalDocs": {
+        "description": "find more info here",
+        "url": "http://developer.okta.com/docs/api/resources/users.html#password-object"
+      },
+      "properties": {
+          "value": {
+              "type": "string",
+              "minimum": 0,
+              "maximum": 40
+          }
+      }
+    },
+    "RecoveryQuestion": {
+      "type": "object",
+      "externalDocs": {
+        "description": "find more info here",
+        "url": "http://developer.okta.com/docs/api/resources/users.html#recovery-question-object"
+      },
+      "properties": {
+          "question": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+          },
+          "answer": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+          }
+      }
+    },
+    "Provider": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "externalDocs": {
+        "description": "find more info here",
+        "url": "http://developer.okta.com/docs/api/resources/users.html#provider-object"
+      },
+      "properties": {
+        "type": {
+            "type": "string",
+            "enum": ["OKTA",
+                    "ACTIVE_DIRECTORY",
+                    "LDAP",
+                    "FEDERATION"]
+        },
+        "name": {
+            "type": "string",
+            "minimum": 1,
+            "maximum": 100
+        }
+      }
+    },
+    "ActivationResponse": {
+      "type": "object",
+      "properties": {
+        "activationUrl": {
+            "type": "string"
+        }
+      }
+    },
+    "TempPassword": {
+      "type": "object",
+      "properties": {
+        "tempPassword": {
+            "type": "string"
+        }
+      }
+    },
+    "ResetPasswordToken": {
+      "type": "object",
+      "properties": {
+        "resetPasswordUrl": {
+            "type": "string"
+        }
+      }
+    },
+    "ChangePasswordRequest": {
+      "type": "object",
+      "required": [
+        "oldPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "oldPassword": {
+            "$ref": "#/definitions/Password"
+        },
+        "newPassword": {
+            "$ref": "#/definitions/Password"
+        }
+      }
+    },
+    "ChangeRecoveryQuestionRequest": {
+      "type": "object",
+      "required": [
+        "password",
+        "recovery_question"
+      ],
+      "properties": {
+        "password": {
+            "$ref": "#/definitions/Password"
+        },
+        "recovery_question": {
+            "$ref": "#/definitions/RecoveryQuestion"
+        }
+      }
+    }
+  }
+}
