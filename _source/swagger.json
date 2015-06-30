@@ -32,11 +32,11 @@
     "application/json"
   ],
   "security": [{
-    "Authorization": {
+    "Authorization": [{
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
-    }
+    }]
   }],
   "paths": {
     "/users": {
