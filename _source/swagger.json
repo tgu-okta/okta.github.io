@@ -58,26 +58,22 @@
               "name": "q",
               "description": "Searches firstName, lastName, and email attributes of users for matching value",
               "type": "string",
-              "required": false,
               "in": "query"
           }, {
               "name": "limit",
               "description": "Specified the number of results",
               "type": "integer",
-              "required": false,
               "default": 10000,
               "in": "query"
           }, {
               "name": "filter",
               "description": "Filter expression for users",
               "type": "string",
-              "required": false,
               "in": "query"
           }, {
               "name": "after",
               "description": "Specifies the pagination cursor for the next page of users",
               "type": "string",
-              "required": false,
               "in": "query"
           }],
         "responses": {
@@ -102,6 +98,74 @@
                 "description": "The number of seconds left in the current period",
                 "type": "integer"
               }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUser",
+        "description": "Creates a new user in your Okta organization with or without credentials",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "http://developer.okta.com/docs/api/resources/users.html#create-user"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "security": [{
+          "Authorization": []
+        }],
+        "parameters": [{
+            "name": "activate",
+            "description": "Executes activation lifecycle operation when creating the user",
+            "type": "boolean",
+            "default": true,
+            "in": "query"
+        }, {
+            "name": "user",
+            "description": "A target new User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "in": "body",
+            "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "User response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "operationId": "getUser",
+        "description": "Fetches a user from your Okta organization",
+        "externalDocs": {
+          "description": "Find more info here",
+          "url": "http://developer.okta.com/docs/api/resources/users.html#get-user"
+        },
+        "produces": [
+          "application/json"
+        ],
+        "security": [{
+          "Authorization": []
+        }],
+        "parameters": [{
+            "name": "id",
+            "description": "id, login, or login shortname (as long as it's unambiguous)",
+            "type": "string",
+            "in": "path",
+            "required": true
+        }],
+        "responses": {
+          "200": {
+            "description": "User response",
+            "schema": {
+              "$ref": "#/definitions/User"
             }
           }
         }
