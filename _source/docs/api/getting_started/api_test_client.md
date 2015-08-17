@@ -11,7 +11,7 @@ redirect_from: "/docs/getting_started/api_test_client.html"
 
 [Postman](http://getpostman.com) is an awesome REST API test client that a lot of people at Okta use to test the Okta API.  We have built templates for all of the Okta APIs that makes playing with the Okta APIs simple and easy if you don't have time to practice your *Command Line Fu* with [cURL](http://en.wikipedia.org/wiki/CURL)
 
-![Postman Chrome Web Store](/assets/img/postman-chrome-web-store.png)
+![Chrome Web Store](/assets/img/postman-chrome-web-store.png "Chrome Web Store")
 
 ### Prerequisites
 
@@ -21,17 +21,17 @@ redirect_from: "/docs/getting_started/api_test_client.html"
 ### Setup
 
 1. [Download Postman Chrome Extension](https://chrome.google.com/webstore/detail/postman-rest-client-packa/fhbjgbiflinjbdggehcddcbncdddomop)
-2. Launch Postman with new Chrome App Launcher
+2. Open the Chrome App Launcher from your browser toolbar or dock. As of the time of this writing, a native Mac OS X Postman application is also available in Beta. 
 
-    ![Chrome App Launcher](/assets/img/chrome-ui-app-launcher.png "Chrome App Launcher")
-    
-    <br>
+    ![Chrome App Launcher](/assets/img/chrome-app-launcher.png "Chrome App Launcher") 
+
+3. Click the Postman application to launch it.
     
     ![Postman App Icon](/assets/img/postman-icon.png "Postman App Icon")
 
-3. Import the environment template
+4. Import the environment template
 
-    You should [download and import the Environment Template JSON](templates/example.okta.com.postman_environment) and duplicate for each new environment (dev, test, preview, prod)
+    You should download and import the [Environment Variables](/docs/api/getting_started/collections/oktaEnvironment.json) and duplicate for each new environment (dev, test, preview, prod)
 
     1. [Download the template environment JSON](templates/example.okta.com.postman_environment) to your computer
     2. Select the `No environment` pull-down at the top and select `Manage environments`
@@ -88,20 +88,20 @@ Once you have setup your Postman environment, you can import pre-built collectio
 
     **Import the following templates:**
 
-|--------------------+---------------------------------------------------------------------------------------------------|
-| Resource           | Postman Collection                                                                                |
-|:-------------------|:--------------------------------------------------------------------------------------------------|
-| apps               | [apps](/docs/api/getting_started/collections/oktaApps.json "Okta Apps")                           |
-| authn              | [authn](/docs/api/getting_started/collections/oktaAuthn.json "Okta Authentication")               |
-| events             | [events](/docs/api/getting_started/collections/oktaEvents.json "Okta Events")                     |
-| factors            | [factors](/docs/api/getting_started/collections/oktaFactors.json "Okta Factors")                  |
-| groups             | [groups](/docs/api/getting_started/collections/oktaGroups.json "Okta Groups")                     |
-| idps               | [idps](/docs/api/getting_started/collections/oktaIdPs.json "Okta Identity Providers")             |
-| policies           | [policies](/docs/api/getting_started/collections/oktaPolicies.json "Okta Policies")               |
-| schema             | [schema](/docs/api/getting_started/collections/oktaSchema.json "Okta Schema")                     |
-| sessions           | [sessions](/docs/api/getting_started/collections/oktaSessions.json "Okta Sessions")               |
-| users              | [users](/docs/api/getting_started/collections/oktaUsers.json "Okta Users")                        |
-|--------------------+---------------------------------------------------------------------------------------------------|
+|----------------------------+----------+-------------------------------------------------------------------------------------------|
+| Resource                   | Version  | Postman Collection                                                                        |
+|:---------------------------|---------:|:------------------------------------------------------------------------------------------|
+| Okta Apps                  |      1.0 | [apps](/docs/api/getting_started/collections/oktaApps.json "Okta Apps")                   |
+| Okta Authentication        |      1.0 | [authn](/docs/api/getting_started/collections/oktaAuthn.json "Okta Authentication")       |
+| Okta Events                |      1.0 | [events](/docs/api/getting_started/collections/oktaEvents.json "Okta Events")             |
+| Okta Factors               |      1.0 | [factors](/docs/api/getting_started/collections/oktaFactors.json "Okta Factors")          |
+| Okta Groups                |      1.0 | [groups](/docs/api/getting_started/collections/oktaGroups.json "Okta Groups")             |
+| Okta Identity Providers    |      1.0 | [idps](/docs/api/getting_started/collections/oktaIdPs.json "Okta Identity Providers")     |
+| Okta Policies              |      1.0 | [policies](/docs/api/getting_started/collections/oktaPolicies.json "Okta Policies")       |
+| Okta Schema                |      1.0 | [schema](/docs/api/getting_started/collections/oktaSchema.json "Okta Schema")             |
+| Okta Sessions              |      1.0 | [sessions](/docs/api/getting_started/collections/oktaSessions.json "Okta Sessions")       |
+| Okta Users                 |      1.0 | [users](/docs/api/getting_started/collections/oktaUsers.json "Okta Users")                |
+|----------------------------+----------+-------------------------------------------------------------------------------------------|
 
 ### Sample Requests
 

@@ -1,0 +1,156 @@
+{
+	"id": "b57979ae-8f87-f514-9098-35ed521e7e67",
+	"name": "{{subdomain}}",
+	"values": [
+		{
+			"key": "appId",
+			"value": "{{appId}}",
+			"type": "text",
+			"name": "appId",
+			"enabled": true
+		},
+		{
+			"key": "apikey",
+			"value": "{{apikey}}",
+			"type": "text",
+			"name": "apikey",
+			"enabled": true
+		},
+		{
+			"key": "domain",
+			"value": "oktapreview.com",
+			"type": "text",
+			"name": "domain",
+			"enabled": true
+		},
+		{
+			"key": "email-suffix",
+			"value": "{{subdomain}}.com",
+			"type": "text",
+			"name": "email-suffix",
+			"enabled": true
+		},
+		{
+			"key": "factorId",
+			"value": "{{factorId}}",
+			"type": "text",
+			"name": "factorId",
+			"enabled": true
+		},
+		{
+			"key": "groupId",
+			"value": "{{groupId}}",
+			"type": "text",
+			"name": "groupId",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "{{password}}",
+			"type": "text",
+			"name": "password",
+			"enabled": true
+		},
+		{
+			"key": "policyId",
+			"value": "00p4e67lc6eBBU4h40h7",
+			"type": "text",
+			"name": "policyId",
+			"enabled": true
+		},
+		{
+			"key": "recoveryToken",
+			"value": null,
+			"type": "text",
+			"name": "recoveryToken",
+			"enabled": true
+		},
+		{
+			"key": "relayState",
+			"value": null,
+			"type": "text",
+			"name": "relayState",
+			"enabled": true
+		},
+		{
+			"key": "roleId",
+			"value": null,
+			"type": "text",
+			"name": "roleId",
+			"enabled": true
+		},
+		{
+			"key": "roleType",
+			"value": "SUPER_ADMIN",
+			"type": "text",
+			"name": "roleType",
+			"enabled": true
+		},
+		{
+			"key": "ruleId",
+			"value": null,
+			"type": "text",
+			"name": "ruleId",
+			"enabled": true
+		},
+		{
+			"key": "sessionId",
+			"value": null,
+			"type": "text",
+			"name": "sessionId",
+			"enabled": true
+		},
+		{
+			"key": "sessionToken",
+			"value": null,
+			"type": "text",
+			"name": "sessionToken",
+			"enabled": true
+		},
+		{
+			"key": "stateToken",
+			"value": null,
+			"type": "text",
+			"name": "stateToken",
+			"enabled": true
+		},
+		{
+			"key": "subdomain",
+			"value": "{{subdomain}}",
+			"type": "text",
+			"name": "subdomain",
+			"enabled": true
+		},
+		{
+			"key": "trustId",
+			"value": null,
+			"type": "text",
+			"name": "trustId",
+			"enabled": true
+		},
+		{
+			"key": "url",
+			"value": "{{url}}",
+			"type": "text",
+			"name": "url",
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": "{{userId}}",
+			"type": "text",
+			"name": "userId",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "{{username}}",
+			"type": "text",
+			"name": "username",
+			"enabled": true
+		}
+	],
+	"timestamp": 1439837910725,
+	"synced": false,
+	"syncedFilename": ""
+}
