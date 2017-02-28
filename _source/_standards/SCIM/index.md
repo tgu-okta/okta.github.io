@@ -540,15 +540,11 @@ Below is how the sample application handles account deactivation:
 For more details on user attribute updates to `/Users/{id}` SCIM endpoint, see [section 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)
 of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Filtering on `id`, `userName`, and `emails`
+##### Filtering on `userName eq`(required)
 
-Being able to filter results by the `id`, `userName`, or `emails`
-attributes is a critical part of working with Okta.
-
-Your SCIM API must be able to filter users by `userName` and should
-also support filtering by `id` and `emails`. Filtering support
+Your SCIM API must be able to filter users following the pattern userName eq "..." ". This filtering support
 is required because most provisioning actions require the ability
-for Okta to determine if a user resource exists on your system. The filter Okta generates will be based on the `userName` field, following the pattern "userName eq "..." ".
+for Okta to determine if a user resource exists on your system. 
 
 Consider the scenario where an Okta customer with thousands of
 users has a provisioning integration with your system, which also
@@ -566,10 +562,6 @@ userName eq "jane.doe"
 userName eq "jane.doe@example.com"
 ~~~
 
-At the moment, Okta only supports the `eq` filter operator. However, the
-[filtering capabilities](https://tools.ietf.org/html/rfc7644#section-3.4.2.2) described in the SCIM 2.0 Protocol Specification are
-much more complicated.
-
 Here is an example of how to implement SCIM filtering in Python:
 
     request_filter = request.args.get('filter')
@@ -581,14 +573,24 @@ Here is an example of how to implement SCIM filtering in Python:
         search_key = getattr(User, search_key_name)
         query = query.filter(search_key == search_value)
 
-Note: The sample code above only supports the `eq` operator. We
-recommend that you add support for all of the filter operators
+Note: The sample code above only supports the `eq` operator.
+
+For more details on filtering in SCIM 2.0, see [section 3.4.2.2](https://tools.ietf.org/html/rfc7644#section-3.4.2.2)
+of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
+
+##### Filtering beyond `userName eq` (optional)
+
+While `userName eq` is the only currently required filter, there are additional parameters and operators that we may require in the future to unlock new use cases. You may want to implement these now as future-proofing.
+
+Additional Parameters: `metadata.lastModified`, `id`, `emails`
+
+Additional Operators: All of the filter operators are
 described in [table 3](https://tools.ietf.org/html/rfc7644#page-18) of the SCIM 2.0 Protocol Specification.
 
 For more details on filtering in SCIM 2.0, see [section 3.4.2.2](https://tools.ietf.org/html/rfc7644#section-3.4.2.2)
 of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Filtering on externalId
+##### Filtering on externalId (optional)
 
 In addition to supporting filtering on `id`, `userName`, and
 `emails`, your application should also support filtering on
