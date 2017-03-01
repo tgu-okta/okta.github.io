@@ -6,7 +6,7 @@ icon: /assets/img/icons/scim.svg
 permalink: /standards/SCIM/
 redirect_from: "/docs/guides/scim_guidance.html"
 ---
-# SCIM: Provisioning with Okta's Lifecycle Management
+# SCIM: Provisioning with Okta's Lifecycle Management TEST
 Developers at a software vendor (ISV), Okta customers, and system-integrators (SI) want to facilitate fast, 
 enterprise-wide deployment of their app by integrating with Okta for user provisioning primarily via the SCIM standard. 
 This article describes:
