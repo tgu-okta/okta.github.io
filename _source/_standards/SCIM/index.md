@@ -588,6 +588,20 @@ described in [table 3](https://tools.ietf.org/html/rfc7644#page-18) of the SCIM 
 For more details on filtering in SCIM 2.0, see [section 3.4.2.2](https://tools.ietf.org/html/rfc7644#section-3.4.2.2)
 of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
+#### Filtering on meta.lastModified
+
+Okta does not currently make queries for resources using
+`meta.lastModified` as part of a filter expression.
+
+Okta plans to add functionality to fetch incremental updates
+from SCIM APIs by querying for resources using a filter expression
+that requests resources which were updated since the last update.
+
+This will likely be done using the `gt` filter operator. For
+example:
+
+> `filter=meta.lastModified gt "2011-05-13T04:42:34Z"`
+
 ##### Filtering on externalId
 
 In addition to supporting filtering on `id`, `userName`, and
@@ -839,20 +853,6 @@ Here is the specification for the `/ServiceProviderConfig` endpoint, from
 > The attributes returned in the JSON object are defined in
 > Section 5 of RFC7643.  An example representation of SCIM service
 > provider configuration may be found in Section 8.5 of RFC7643.
-
-#### Filtering on meta.lastModified
-
-Okta does not currently make queries for resources using
-`meta.lastModified` as part of a filter expression.
-
-Okta plans to add functionality to fetch incremental updates
-from SCIM APIs by querying for resources using a filter expression
-that requests resources which were updated since the last update.
-
-This will likely be done using the `gt` filter operator. For
-example:
-
-> `filter=meta.lastModified gt "2011-05-13T04:42:34Z"`
 
 ## Publishing Your SCIM-Based Provisioning Integration
 
